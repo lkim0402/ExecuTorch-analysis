@@ -57,7 +57,7 @@ def test_pytorch_and_executorch(executorch_model_path):
     eager_avg, eager_max = measure_latency(inference_pytorch)
     avg, max = measure_latency(inference_executorch)
 
-    print("model_name: MobileNetV2")
+    print("model_name: mobilenet_v2")
     print("mean_absolute_difference:", mae_value)
     print(f"pytorch_latency: avg {eager_avg:.2f} ms, max {eager_max:.2f} ms")
     print(f"executorch_latency: avg {avg:.2f} ms, max {max:.2f} ms")
