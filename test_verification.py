@@ -13,7 +13,7 @@ from utils.model_compiler import compile_executorch_model_for_path
 @pytest.fixture(scope="module")
 def executorch_model_path():
     model_path = compile_executorch_model_for_path()
-    assert model_path == "model.pte"
+    assert model_path == "mobilenetv2.pte"
     yield model_path
 
     # teardown
