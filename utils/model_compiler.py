@@ -6,9 +6,11 @@ from executorch.backends.xnnpack.partition.xnnpack_partitioner import XnnpackPar
 from executorch.exir import to_edge_transform_and_lower
 from typing import List
 
-def compile_executorch_model_for_path():
-    model_path = "model.pte"
+def compile_executorch_model_for_path(model_path_name="mobilenetv2.pte"):
+
     model = models.mobilenetv2.mobilenet_v2(weights=MobileNet_V2_Weights.DEFAULT).eval()
+    if model_path_name == "resnet18.pte":
+        model = models.resnet18(weights=models.ResNet18_Weights.DEFAULT).eval()
     
     sample_inputs = (torch.randn(1, 3, 224, 224), )
 
@@ -17,7 +19,7 @@ def compile_executorch_model_for_path():
         partitioner=[XnnpackPartitioner()]
     ).to_executorch()
 
-    with open(model_path, "wb") as f:
+    with open(model_path_name, "wb") as f:
         f.write(et_program.buffer)
     
-    return model_path
+    return model_path_name
