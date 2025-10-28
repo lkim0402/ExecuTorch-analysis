@@ -3,8 +3,8 @@ import os
 import json
 import argparse
 from utils.measure_latency import measure_latency
-import torch.nn as nn
 from utils.model_compiler import compile_executorch_model_for_path
+import torch.nn as nn
 from executorch.runtime import Runtime
 
 model_dict = {
